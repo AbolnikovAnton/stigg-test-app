@@ -1,25 +1,28 @@
-import logo from './logo.svg';
 import './App.css';
+import {useEffect, useState} from "react";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const [bookings, setBookings] = useState([]);
+
+    useEffect(() => {
+        fetch('https://interview-booking-api.herokuapp.com/api/bookings')
+            .then(response => response.json())
+            .then(data => setBookings(data))
+    }, []);
+
+
+    console.log(bookings)
+
+    return (
+        <div>
+            <ul>
+                {bookings.map(item =>
+                    <li key={item.id}>{item.id}</li>
+                )}
+            </ul>
+        </div>
+    )
+        ;
 }
 
 export default App;
