@@ -10,15 +10,15 @@ const Employee = () => {
     }, []);
 
     function getEmployee (id) {
-        const employeeArr =  employee.filter(item => item.employee.id == id)
-        console.log(employeeArr)
+        const employeeArr =  employee.filter(item => item.roomType == id)
+        // console.log(employeeArr)
 
         return employeeArr
     }
 
     return (
         <div>
-            {console.log(getEmployee(4))}
+            {console.log(getEmployee('SINGLE_ROOM'))}
         </div>
     );
 };
