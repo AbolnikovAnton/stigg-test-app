@@ -1,31 +1,59 @@
 import React, {useEffect, useState} from 'react';
+import {IconButton, TextField} from "@mui/material";
+import {SearchOutlined} from "@mui/icons-material";
 
 const Employee = () => {
-    const [employee, setEmployee] = useState([]);
+    const [employees, setEmployees] = useState([]);
+    const [employeeById, setEmployeeById] = useState([]);
 
     useEffect(() => {
         fetch('https://interview-booking-api.herokuapp.com/api/bookings')
             .then(response => response.json())
-            .then(data => setEmployee(data))
+            .then(data => setEmployees(data))
     }, []);
 
-    function getEmployee (id) {
-        const employeeArr =  employee.filter(item => item.roomType == id)
-        // console.log(employeeArr)
+    function getEmployee(id) {
+        // console.log(employees)
+        const employeeArr = employees.filter(item => item.employee?.id === id)
 
-        return employeeArr
+        return setEmployeeById(employeeArr)
     }
 
     return (
-        <div>
-            {console.log(getEmployee('SINGLE_ROOM'))}
-        </div>
+        <React.Fragment>
+            <h1>Salesperson Leaderboard</h1>
+            <TextField
+                fullWidth
+                InputProps={{
+                    endAdornment: (
+                        <IconButton aria-label="search">
+                            <SearchOutlined />
+                        </IconButton>
+                    ),
+                }}
+                id="outlined-basic"
+                label="Search for salesperson"
+                variant="outlined"
+                sx={{
+                    width: 500,
+                    maxWidth: '100%',
+                }}/>
+
+            <table>
+                <thead>
+                <tr>
+                    <th>Place</th>
+                    <th>Name</th>
+                    <th>Total booked hours</th>
+                    <th>Most sold room type</th>
+                </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+        </React.Fragment>
     );
 };
 
 export default Employee;
-
-
-// if (item.employee.id == ){
-//
-// }
