@@ -52,6 +52,15 @@ const Employee = () => {
                 {employees.map((item) =>
                     <tr key={item.id}>
                         {item.firstName}
+                        <td >
+                            {item.lastName}
+                        </td>
+                        <td >
+                            {item.employee?.id}
+                        </td>
+                        <td >
+                            {item.roomType}
+                        </td>
                     </tr>
                 )}
                 </tbody>
