@@ -27,7 +27,7 @@ const Employee = () => {
                 InputProps={{
                     endAdornment: (
                         <IconButton aria-label="search">
-                            <SearchOutlined />
+                            <SearchOutlined/>
                         </IconButton>
                     ),
                 }}
@@ -49,7 +49,11 @@ const Employee = () => {
                 </tr>
                 </thead>
                 <tbody>
-
+                {employees.map((item) =>
+                    <tr key={item.id}>
+                        {item.firstName}
+                    </tr>
+                )}
                 </tbody>
             </table>
         </React.Fragment>
