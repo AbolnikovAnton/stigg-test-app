@@ -51,9 +51,9 @@ const Employee = () => {
                 <tbody>
                 {employees.map((item) =>
                     <tr key={item.id}>
-                        {item.firstName}
+                        {item.id}
                         <td >
-                            {item.lastName}
+                            {item.firstName} {item.lastName}
                         </td>
                         <td >
                             {item.employee?.id}

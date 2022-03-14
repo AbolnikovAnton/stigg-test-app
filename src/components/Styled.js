@@ -17,7 +17,7 @@ export const TopStats = styled.div`
   position: relative;
   border: 1px solid gray;
   box-shadow: 5px 5px 5px;
-  font-size: 1.4rem;
+  font-size: 1.5rem;
   color: #000000;
   border-radius: 50%; 
 `;

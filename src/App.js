@@ -23,8 +23,7 @@ function App() {
                 <TopStats>Available Rooms {bookingsSnapshot.availableRooms}</TopStats>
                 <TopStats>Week Availability {bookingsSnapshot.weekAvailabilityPercent}%</TopStats>
             </TopStatsBar>
-            <Employee/>
-
+                <Employee/>
         </div>
     )
     // ;
