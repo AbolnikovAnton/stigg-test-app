@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {IconButton, TextField} from "@mui/material";
 import {SearchOutlined} from "@mui/icons-material";
+import SearchIcon from '@mui/icons-material/Search';
 
 const Employee = () => {
     const [data, setData] = useState([]);
@@ -17,7 +18,7 @@ const Employee = () => {
 
     function getEmployee(id) {
 
-        const employeeArr = data.map(item => item.employee?.id )
+        const employeeArr = data.map(item => item.employee?.id)
 
         return setEmployeeById(employeeArr)
     }
@@ -30,7 +31,7 @@ const Employee = () => {
                 InputProps={{
                     endAdornment: (
                         <IconButton aria-label="search">
-                            <SearchOutlined/>
+                            <SearchIcon fontSize='large'/>
                         </IconButton>
                     ),
                 }}
@@ -38,7 +39,6 @@ const Employee = () => {
                 label="Search for salesperson"
                 variant="outlined"
                 sx={{
-                    width: 500,
                     maxWidth: '100%',
                 }}/>
 
@@ -55,13 +55,13 @@ const Employee = () => {
                 {data.map((item) =>
                     <tr key={item.id}>
                         {item.id}
-                        <td >
+                        <td>
                             {item.firstName} {item.lastName}
                         </td>
-                        <td >
+                        <td>
                             {item.employee?.id}
                         </td>
-                        <td >
+                        <td>
                             {item.roomType}
                         </td>
                     </tr>
