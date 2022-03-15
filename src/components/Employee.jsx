@@ -3,18 +3,21 @@ import {IconButton, TextField} from "@mui/material";
 import {SearchOutlined} from "@mui/icons-material";
 
 const Employee = () => {
-    const [employees, setEmployees] = useState([]);
+    const [data, setData] = useState([]);
     const [employeeById, setEmployeeById] = useState([]);
+    const [currentId, setCurrentId] = useState(-1);
+    const [hours, setHours] = useState([]);
+    const [roomtype, setRoomtype] = useState([]);
 
     useEffect(() => {
         fetch('https://interview-booking-api.herokuapp.com/api/bookings')
             .then(response => response.json())
-            .then(data => setEmployees(data))
+            .then(data => setData(data))
     }, []);
 
     function getEmployee(id) {
-        // console.log(employees)
-        const employeeArr = employees.filter(item => item.employee?.id === id)
+
+        const employeeArr = data.map(item => item.employee?.id )
 
         return setEmployeeById(employeeArr)
     }
@@ -49,7 +52,7 @@ const Employee = () => {
                 </tr>
                 </thead>
                 <tbody>
-                {employees.map((item) =>
+                {data.map((item) =>
                     <tr key={item.id}>
                         {item.id}
                         <td >
