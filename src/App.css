@@ -44,20 +44,28 @@ table {
   text-align: center;
   border-collapse: collapse;
   border-spacing: 5px;
-  background: #E1E3E0;
+  background: rgba(229, 229, 229, 0.8);
   border-radius: 20px;
+  box-shadow: 3px 3px 3px;
 }
+
 th {
   font-size: 22px;
   font-weight: 300;
   padding: 12px 10px;
-  border-bottom: 2px solid #F56433;
-  color: #F56433;
+  border-bottom: 2px solid #336af5;
+  color: #336af5;
 }
-tbody tr:nth-child() {
-  border-bottom: 2px solid #F56433;
+
+tbody tr:nth-child {
+  border-bottom: 2px solid #336af5;
 }
+
 td {
   padding: 10px;
-  color: #8D8173;
+  color: rgb(110, 99, 89);
+}
+
+td::first-letter{
+  text-transform: uppercase;
 }

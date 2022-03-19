@@ -17,9 +17,10 @@ export const TopStats = styled.div`
   height: 150px;
   text-align: center;
   position: relative;
-  border: 1px solid gray;
-  box-shadow: 5px 5px 5px;
+  box-shadow: 5px 5px 5px black;
   font-size: 1.5rem;
-  color: #000000;
-  border-radius: 50%; 
+  border-radius: 50%;
+  color: #336af5;
+  background: rgba(229, 229, 229, 0.8);
+
 `;

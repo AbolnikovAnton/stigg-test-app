@@ -52,14 +52,9 @@ const Employee = () => {
         });
 
         const formattedArray = Object.values(helper)
-
-        // const formattedArray = Object.keys(helper).map((keyHelper) => {
-        //     return {...helper[keyHelper]};
-        // });
         const sortedArray = formattedArray.sort(
             (a, b) => b.bookedHours - a.bookedHours
         );
-
 
         return setEmployeeById(sortedArray)
     }
@@ -80,7 +75,7 @@ const Employee = () => {
                     ),
                 }}
                 id="outlined-basic"
-                label={'Search for salesperson: ' + employeeName}
+                label='Search for salesperson'
                 variant="outlined"
                 sx={{
                     maxWidth: '100%',
@@ -109,10 +104,10 @@ const Employee = () => {
                             {item.name}
                         </td>
                         <td>
-                            {item.bookedHours}
+                            {item.bookedHours} hours
                         </td>
                         <td>
-                            {item.mostSoldRoomType}
+                            {item.mostSoldRoomType.toLowerCase().replace('_', ' ')}
                         </td>
                     </tr>
                 )}
