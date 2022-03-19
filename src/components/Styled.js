@@ -23,4 +23,8 @@ export const TopStats = styled.div`
   color: #336af5;
   background: rgba(229, 229, 229, 0.8);
 
+  :hover {
+    background-color: rgba(217, 217, 217, 0.8);
+    cursor: pointer;
+  }
 `;

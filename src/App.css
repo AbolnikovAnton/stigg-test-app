@@ -66,6 +66,11 @@ td {
   color: rgb(110, 99, 89);
 }
 
+tr:hover{
+  background-color: rgba(217, 217, 217, 0.8);
+  cursor: pointer;
+}
+
 td::first-letter{
   text-transform: uppercase;
 }
