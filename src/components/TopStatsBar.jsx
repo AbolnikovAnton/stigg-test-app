@@ -1,10 +1,8 @@
 import React from 'react';
 import {useEffect, useState} from "react";
 import {TopStats, TopStatsBar} from "./Styled";
-import Employee from "./Employee";
 
 const TopStatsBarCircle = () => {
-
     const [bookingsSnapshot, setBookingsSnapshot] = useState([]);
 
     useEffect(() => {
