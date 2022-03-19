@@ -17,14 +17,11 @@ export const TopStats = styled.div`
   height: 150px;
   text-align: center;
   position: relative;
-  box-shadow: 5px 5px 5px black;
+  box-shadow: 5px 5px 5px gray;
   font-size: 1.5rem;
   border-radius: 50%;
-  color: #336af5;
-  background: rgba(229, 229, 229, 0.8);
-
-  :hover {
-    background-color: rgba(217, 217, 217, 0.8);
-    cursor: pointer;
-  }
+  color: #1976d2;
+  border: 0.5px solid gray;
+  opacity: 80%;
+  //background: rgba(229, 229, 229, 0.8);
 `;
