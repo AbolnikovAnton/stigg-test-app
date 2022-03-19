@@ -8,12 +8,14 @@ export const TopStatsBar = styled.div`
 `
 
 export const TopStats = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   margin: 20px 15px;
   line-height: 50px;
   width: 150px;
   height: 150px;
   text-align: center;
-  vertical-align: middle;
   position: relative;
   border: 1px solid gray;
   box-shadow: 5px 5px 5px;

@@ -4,29 +4,73 @@ import {SearchOutlined} from "@mui/icons-material";
 import SearchIcon from '@mui/icons-material/Search';
 
 const Employee = () => {
-    const [data, setData] = useState([]);
     const [employeeById, setEmployeeById] = useState([]);
-    const [currentId, setCurrentId] = useState(-1);
-    const [hours, setHours] = useState([]);
-    const [roomtype, setRoomtype] = useState([]);
+    const [employeeName, setEmployeeName] = useState(null);
 
     useEffect(() => {
         fetch('https://interview-booking-api.herokuapp.com/api/bookings')
             .then(response => response.json())
-            .then(data => setData(data))
+            .then(data => getEmployee(data))
     }, []);
 
-    function getEmployee(id) {
+    // const
 
-        const employeeArr = data.map(item => item.employee?.id)
+    const getEmployee = (data) => {
+        const helper = {};
 
-        return setEmployeeById(employeeArr)
+        data.forEach((arrElement, idx) => {
+            if (arrElement.employee?.id) {
+                helper[arrElement.employee.id] = helper[arrElement.employee.id] || {
+                    name: arrElement.employee.lastName + " " + arrElement.employee.firstName,
+                    bookedHours: 0
+                };
+                let checkInDate = new Date(
+                    arrElement.checkInDate.split("-").reverse().join("-")
+                );
+                let checkOutDate = new Date(
+                    arrElement.checkOutDate.split("-").reverse().join("-")
+                );
+                let hours = (checkOutDate - checkInDate) / 1000 / 60 / 60;
+                helper[arrElement.employee.id].bookedHours =
+                    helper[arrElement.employee.id].bookedHours + hours;
+                helper[arrElement.employee.id].rooms =
+                    helper[arrElement.employee.id].rooms || {};
+                helper[arrElement.employee.id].rooms[arrElement.roomType] =
+                    (helper[arrElement.employee.id].rooms[arrElement.roomType] || 0) + 1;
+                helper[arrElement.employee.id].mostSoldRoomType =
+                    helper[arrElement.employee.id].mostSoldRoomType || arrElement.roomType;
+                Object.keys(helper[arrElement.employee.id].rooms).forEach((keyRoom) => {
+                    if (
+                        helper[arrElement.employee.id].rooms[
+                            helper[arrElement.employee.id].mostSoldRoomType
+                            ] < helper[arrElement.employee.id].rooms[arrElement.roomType]
+                    ) {
+                        helper[arrElement.employee.id].mostSoldRoomType = arrElement.roomType;
+                    }
+                });
+            }
+        });
+
+        const formattedArray = Object.values(helper)
+
+        // const formattedArray = Object.keys(helper).map((keyHelper) => {
+        //     return {...helper[keyHelper]};
+        // });
+        const sortedArray = formattedArray.sort(
+            (a, b) => b.bookedHours - a.bookedHours
+        );
+
+
+        return setEmployeeById(sortedArray)
     }
 
     return (
         <React.Fragment>
             <h1>Salesperson Leaderboard</h1>
             <TextField
+                onChange={(e) => {
+                    setEmployeeName(e.target.value)
+                }}
                 fullWidth
                 InputProps={{
                     endAdornment: (
@@ -36,7 +80,7 @@ const Employee = () => {
                     ),
                 }}
                 id="outlined-basic"
-                label="Search for salesperson"
+                label={'Search for salesperson: ' + employeeName}
                 variant="outlined"
                 sx={{
                     maxWidth: '100%',
@@ -52,17 +96,23 @@ const Employee = () => {
                 </tr>
                 </thead>
                 <tbody>
-                {data.map((item) =>
-                    <tr key={item.id}>
-                        {item.id}
+                {employeeById.map((item, idx) =>
+                    <tr
+                        key={idx}
+                        className=
+                            {employeeName && item.name.toLowerCase().includes(employeeName.toLowerCase())
+                                ? 'item-found' : employeeName ? 'd-none': ''}>
                         <td>
-                            {item.firstName} {item.lastName}
+                            {idx + 1}
                         </td>
                         <td>
-                            {item.employee?.id}
+                            {item.name}
                         </td>
                         <td>
-                            {item.roomType}
+                            {item.bookedHours}
+                        </td>
+                        <td>
+                            {item.mostSoldRoomType}
                         </td>
                     </tr>
                 )}
