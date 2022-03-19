@@ -42,7 +42,7 @@ const Employee = () => {
 
             <table>
                 <thead>
-                <tr>
+                <tr className='table-header'>
                     <th>Place</th>
                     <th>Name</th>
                     <th>Total booked hours</th>

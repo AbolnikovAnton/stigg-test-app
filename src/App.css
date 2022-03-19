@@ -70,14 +70,15 @@ tr:hover{
   cursor: pointer;
 }
 
+.table-header:hover{
+  background-color: white;
+  cursor: default;
+}
+
 td::first-letter{
   text-transform: uppercase;
 }
 
-tr:first-child{
-  cursor: pointer;
-  height: 50px;
-}
 
 h1{
   color: rgb(56, 43, 29, 80%);
