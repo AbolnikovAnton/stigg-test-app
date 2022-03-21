@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/stigg-test-app/static/css/main.08386184.css",
+    "main.js": "/stigg-test-app/static/js/main.64f36cd9.js",
+    "static/js/787.2542a2ba.chunk.js": "/stigg-test-app/static/js/787.2542a2ba.chunk.js",
+    "index.html": "/stigg-test-app/index.html",
+    "main.08386184.css.map": "/stigg-test-app/static/css/main.08386184.css.map",
+    "main.64f36cd9.js.map": "/stigg-test-app/static/js/main.64f36cd9.js.map",
+    "787.2542a2ba.chunk.js.map": "/stigg-test-app/static/js/787.2542a2ba.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.08386184.css",
+    "static/js/main.64f36cd9.js"
+  ]
+}
